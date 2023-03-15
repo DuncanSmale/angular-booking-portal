@@ -1,5 +1,35 @@
 .header-align-right {
-    display: flex;
     padding: 21px 21px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-end {
     justify-content: flex-end;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.padding-left {
+    padding-left: 10px
+}
+
+.padding-right {
+    padding-right: 10px
+}
+
+.center {
+    align-items: center;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.text-center {
+    text-align: center
 }
