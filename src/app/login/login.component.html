@@ -1,13 +1,13 @@
 <h2 mat-dialog-title>Login</h2>
-<section mat-dialog-content class="container">
+<section mat-dialog-content class="container ">
     <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Placeholder">
+        <input matInput placeholder="Placeholder" [formControl]="usernameControl">
     </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Placeholder" type="password">
-    </mat-form-field>
-    <section mat-dialog-actions>
+    <h3 *ngIf="!!error">{{error}}</h3>
+</section>
 
-    </section>
+<section mat-dialog-actions>
+    <button mat-raised-button color="basic" (click)="close()">Close</button>
+    <button mat-raised-button color="primary" (click)="login(usernameControl.value ?? '')">Login</button>
+</section>

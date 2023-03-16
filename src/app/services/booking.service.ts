@@ -10,10 +10,10 @@ export class BookingService {
 
   constructor(private client: HttpClient) { }
 
-  createBooking(flightId: number, customerId: number) {
+  createBooking(flightId: number, customerId: number, username: string, password: string) {
     var headers_object = new HttpHeaders();
     headers_object.append('Content-Type', 'application/json');
-    headers_object.append("Authorization", "Basic " + btoa("username:password"));
+    headers_object.append("Authorization", "Basic " + btoa(`${username}:${password}`));
 
     const httpOptions = {
       headers: headers_object

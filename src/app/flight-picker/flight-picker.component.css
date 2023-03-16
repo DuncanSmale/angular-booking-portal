@@ -1,0 +1,11 @@
+.center {
+    align-items: center;
+}
+
+.space {
+    justify-content: space-between;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}

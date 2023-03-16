@@ -1,0 +1,53 @@
+<mat-card class="margin-bottom">
+  <mat-card-header>
+    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="chosen">
+        <mat-option [value]="option" *ngFor="let option of searchOptions">{{ option }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-header>
+  <mat-card-content>
+    <container-element [ngSwitch]="chosen">
+      <ng-container *ngSwitchCase="'DAYS'">
+        <div class="container space center">
+          <mat-form-field appearance="outline">
+            <mat-label>Days To Flight</mat-label>
+            <input matInput placeholder="7" [formControl]="control">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="search(constructSearchParams(chosen))">SEARCH</button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'DATEFROM'">
+        <div class="container space center">
+          <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" [formControl]="startDateControl">
+              <input matEndDate placeholder="End date" [formControl]="endDateControl">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="search(constructSearchParams(chosen))">SEARCH</button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'ORIGINDESTINATION'">
+        <div class="container space center">
+          <mat-form-field appearance="outline">
+            <mat-label>Origin</mat-label>
+            <input matInput placeholder="Johannesburg" [formControl]="origin">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Destination</mat-label>
+            <input matInput placeholder="Capetown" [formControl]="destination">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="search(constructSearchParams(chosen))">SEARCH</button>
+        </div>
+      </ng-container>
+    </container-element>
+  </mat-card-content>
+</mat-card>

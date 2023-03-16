@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Flight } from '../models/flight';
 import { FlightsService } from '../services/flights.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-flights',
@@ -12,7 +13,7 @@ export class FlightsComponent implements OnInit {
   dataSource: Flight[] = []
   displayedColumns: string[] = ['number', 'origin', 'destination', 'seatsAvailable', 'seatCost'];
 
-  constructor(private flightsService: FlightsService) {
+  constructor(private flightsService: FlightsService, private loginService: LoginService) {
 
   }
 
@@ -25,6 +26,7 @@ export class FlightsComponent implements OnInit {
 
   bookFlight(flight: Flight) {
     console.log(flight)
+    
   }
 
 }

@@ -1,18 +1,30 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   private username: string | null = null
-  private password: string | null = null
 
-  Username() { return this.username; }
-  Password() { return this.password; }
+  loggedInUser = new BehaviorSubject<string | null>(null)
 
-  Login(username: string, password: string) {
+  getLoggedInUser() {
+    return this.loggedInUser.getValue()
+  }
+
+  isUserLoggedIn() {
+    return this.username !== null
+  }
+
+  Login(username: string) {
     this.username = username
-    this.password = password
+    this.loggedInUser.next(this.username)
+  }
+
+  Lougout() {
+    this.username = null
+    this.loggedInUser.next(this.username)
   }
 
   constructor() { }

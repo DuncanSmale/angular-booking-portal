@@ -1,0 +1,16 @@
+<mat-toolbar>
+    <nav>
+        <ul>
+            <li><a routerLink="/flights" routerLinkActive="active" ariaCurrentWhenActive="page">Flights</a></li>
+        </ul>
+    </nav>
+    <span class="example-spacer"></span>
+    <ng-container *ngIf="!!username">
+        <span>Welcome: {{username}}</span>
+        <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+    </ng-container>
+
+    <ng-container *ngIf="!!!username">
+        <button mat-raised-button color="primary" (click)="login()">Login</button>
+    </ng-container>
+</mat-toolbar>
